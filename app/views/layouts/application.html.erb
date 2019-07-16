@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YPv2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav> 
+        <ul>
+          <li> <%= link_to "Sign In", '/users/sign_in' %></li>
+          <li> <%= link_to "Sign Out", '/users/sign_out', {method: :delete} %></li> 
+        </ul>
+        <% if user_signed_in? == true %>
+        <%= "You are signed in as #{current_user[:role_id]}" %>
+        <% end %>
+    </nav>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  first_name: MyString
+  last_name: MyString
+  year_level: MyString
+
+two:
+  team: two
+  first_name: MyString
+  last_name: MyString
+  year_level: MyString
