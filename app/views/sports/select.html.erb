@@ -1,0 +1,14 @@
+<h1> Welcome <h1>
+
+<p> Please select a sport season: </p>
+
+
+<%= form_with url: '/select' do |f| %> 
+  
+  <%= f.select(:season, options_for_select([["Summer", "summer"],["Both", "both"], ["Winter", "winter"]])) %>
+
+  <div> 
+    <%= f.submit "Go!" %>
+    <%= params %> 
+  </div>
+<% end %>

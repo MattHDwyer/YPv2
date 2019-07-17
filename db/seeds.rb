@@ -23,3 +23,11 @@
 #     puts "The seed file ran and put in some ***ROLES****!"
 
 ################################################################
+
+# TO BE ADDED: #
+
+# user = [
+#     {
+#         email: 
+#     }
+# ]

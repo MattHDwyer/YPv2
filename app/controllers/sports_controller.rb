@@ -3,9 +3,58 @@ class SportsController < ApplicationController
 
   # GET /sports
   # GET /sports.json
-  def index
-    @sports = Sport.all
+
+  def select
+  
   end
+
+  def select_save
+    redirect_to '/select'
+  end
+
+  def index
+    puts "HERE"
+    # raise
+    puts params
+    if params[:season] == "both"
+      @sports = Sport.all
+    elsif params[:season] == "summer"
+      @sports = Sport.where(season: Season.find(1))
+    elsif params[:season] == "winter"
+      @sports = Sport.where(season: Season.find(2))
+    end
+    puts "GOT TO HERE"
+    render :index
+
+    # @sports = Sport.all
+
+    # @winter_sports = []
+    # @summer_sports = []
+   
+
+    # @sports.each do |sport| 
+    #   if sport.season[:id] == 2
+    #       @winter_sports << sport
+    #   elsif
+    #      sport.season[:id] == 1
+    #       @summer_sports << sport
+    #   end
+    # end 
+    #new variable (@season) when selected 
+  end
+
+  # def change_season
+  #   if params[:season] == "Summer"
+  #     @flag = "Summer"
+  #   elsif params[:season] == "Winter"
+  #     @flag = "Winter"
+  #   end
+
+  #   p params
+
+  #   redirect_to '/sports'
+
+  # end
 
   # GET /sports/1
   # GET /sports/1.json
@@ -75,4 +124,5 @@ class SportsController < ApplicationController
     def sport_params
       params.require(:sport).permit(:name, :season_id, :gender)
     end
+
 end

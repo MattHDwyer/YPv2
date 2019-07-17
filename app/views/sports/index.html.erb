@@ -1,15 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sports</h1>
+<h1>  Sports </h1>
 
+<h2> <%= "@sports is #{@sports}" %> </h2>
 
-<select id="size_select">
-  <option value="option1">Summer</option>
-  <option value="option2">Winter</option>
-</select>
-
-<div id="option1" class="size_chart">
-  <table>
+<table>
   <thead>
     <tr>
       <th>Name</th>
@@ -20,54 +15,30 @@
   </thead>
 
   <tbody>
-    <% @sports.each do |sport| %>
       <tr>
+        <% @sports.each do |sport| %>
         <td><%= sport.name %></td>
-        <td><%= sport.season[:name] %></td>
+        <td><%= sport.season.name %></td>
         <td><%= sport.gender %></td>
         <td><%= link_to 'Show', sport %></td>
         <td><%= link_to 'Edit', edit_sport_path(sport) %></td>
         <td><%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <tr>
+        
+      </tr>
     <% end %>
   </tbody>
 </table>
+
 
 <br>
 
 <% if current_user.id == 1 %>
 <%= link_to 'New Sport', new_sport_path %>
 <% end %>
-</div>
-<div id="option2" class="size_chart">
-  <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Season</th>
-      <th>Gender</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @sports.each do |sport| %>
-      <tr>
-        <td><%= sport.name %></td>
-        <td><%= sport.season[:name] %></td>
-        <td><%= sport.gender %></td>
-        <td><%= link_to 'Show', sport %></td>
-        <td><%= link_to 'Edit', edit_sport_path(sport) %></td>
-        <td><%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<% if current_user.id == 1 %>
-<%= link_to 'New Sport', new_sport_path %>
-<% end %>
-</div>
 
+  

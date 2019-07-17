@@ -33,6 +33,10 @@ gem 'devise'
 #Create Roles in User:
 gem 'pundit'
 
+#Helps with the creation of forms:
+gem 'simple_form'
+
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
