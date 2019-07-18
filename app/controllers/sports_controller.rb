@@ -4,27 +4,18 @@ class SportsController < ApplicationController
   # GET /sports
   # GET /sports.json
 
-  def select
-  
-  end
-
-  def select_save
-    redirect_to '/select'
-  end
-
   def index
-    puts "HERE"
-    # raise
-    puts params
     if params[:season] == "both"
       @sports = Sport.all
     elsif params[:season] == "summer"
       @sports = Sport.where(season: Season.find(1))
     elsif params[:season] == "winter"
       @sports = Sport.where(season: Season.find(2))
+    elsif params[:season] == nil
+      redirect_to '/'
     end
     puts "GOT TO HERE"
-    render :index
+    
 
     # @sports = Sport.all
 
@@ -41,6 +32,10 @@ class SportsController < ApplicationController
     #   end
     # end 
     #new variable (@season) when selected 
+  end
+
+  def select
+  
   end
 
   # def change_season
@@ -91,6 +86,7 @@ class SportsController < ApplicationController
   # PATCH/PUT /sports/1
   # PATCH/PUT /sports/1.json
   def update
+    authorize(Coach)
     respond_to do |format|
       if @sport.update(sport_params)
         format.html { redirect_to @sport, notice: 'Sport was successfully updated.' }
@@ -100,18 +96,19 @@ class SportsController < ApplicationController
         format.json { render json: @sport.errors, status: :unprocessable_entity }
       end
     end
-    authorize(Coach)
+    
   end
 
   # DELETE /sports/1
   # DELETE /sports/1.json
   def destroy
+    authorize(Coach)
     @sport.destroy
     respond_to do |format|
       format.html { redirect_to sports_url, notice: 'Sport was successfully destroyed.' }
       format.json { head :no_content }
     end
-    authorize(Coach)
+    
   end
 
   private

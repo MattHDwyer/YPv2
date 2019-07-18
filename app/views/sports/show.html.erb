@@ -7,7 +7,7 @@
 
 <p>
   <strong>Season:</strong>
-  <%= @sport.season %>
+  <%= @sport.season[:name] %>
 </p>
 
 <p>
@@ -15,5 +15,20 @@
   <%= @sport.gender %>
 </p>
 
+<tbody>
+  <% @sport.teams.each do |team| %>
+    <tr>
+      <td> <%= team.name  %> </td>
+      <td><%= link_to 'Show', sport_team_path(team.sport, team) %></td>
+      <td><%= link_to 'Edit', edit_team_path(team) %></td>
+      <td><%= link_to 'Destroy', team_path(team.sport, team), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+</tbody>
+
+<br>
+<br>
+<br>
+
 <%= link_to 'Edit', edit_sport_path(@sport) %> |
-<%= link_to 'Back', sports_path %>
+<%= link_to 'Back', sports_path(@sport.season.id) %>

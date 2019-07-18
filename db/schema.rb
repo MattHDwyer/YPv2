@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_233949) do
+ActiveRecord::Schema.define(version: 2019_07_18_005501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,10 +25,9 @@ ActiveRecord::Schema.define(version: 2019_07_15_233949) do
   end
 
   create_table "coaches", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -77,8 +76,10 @@ ActiveRecord::Schema.define(version: 2019_07_15_233949) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "year_level_group_id"
     t.index ["coach_id"], name: "index_teams_on_coach_id"
     t.index ["sport_id"], name: "index_teams_on_sport_id"
+    t.index ["year_level_group_id"], name: "index_teams_on_year_level_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,6 +96,12 @@ ActiveRecord::Schema.define(version: 2019_07_15_233949) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  create_table "year_level_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_squads", "students"
   add_foreign_key "active_squads", "teams"
   add_foreign_key "sports", "seasons"
@@ -103,4 +110,5 @@ ActiveRecord::Schema.define(version: 2019_07_15_233949) do
   add_foreign_key "team_students", "teams"
   add_foreign_key "teams", "coaches"
   add_foreign_key "teams", "sports"
+  add_foreign_key "teams", "year_level_groups"
 end

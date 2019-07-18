@@ -12,18 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :sport_id %>
-    <%= form.text_field :sport_id %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year_level_group_id %>
+    <%= form.collection_select :year_level_group_id, YearLevelGroup.order(:id), :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sport %>
+    <%= form.collection_select :sport_id, Sport.order(:name), :id, :name %>
   </div>
 
   <div class="field">
     <%= form.label :coach_id %>
-    <%= form.text_field :coach_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.collection_select :coach_id, Coach.order(:name), :id, :name %>
   </div>
 
   <div class="actions">

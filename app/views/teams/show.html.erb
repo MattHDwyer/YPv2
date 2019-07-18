@@ -2,12 +2,12 @@
 
 <p>
   <strong>Sport:</strong>
-  <%= @team.sport %>
+  <%= @team.sport.name %>
 </p>
 
 <p>
   <strong>Coach:</strong>
-  <%= @team.coach %>
+  <%= @team.coach.name %>
 </p>
 
 <p>
@@ -16,4 +16,4 @@
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<%= link_to 'Back', sport_path(@team.sport) %>

@@ -10,6 +10,17 @@ class CoachPolicy < ApplicationPolicy
       user.role == Role.find(1)
     end
 
+    def edit?
+      user.role == Role.find(1)
+    end
+
+    def update?
+      user.role == Role.find(1)
+    end
+
+
+
+
 
     # def update?
     #   user.admin? or not coach.published?
